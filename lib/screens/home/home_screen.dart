@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/double_tap_tab.dart';
+import 'package:flutter_microinteracoes/screens/home/tabs/long_press_tab.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/pressible_tab.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> tabs = [
     PressableTab(),
     DoubleTapTab(),
+    LongPressTab(),
   ];
 
   void _onItemTapped(int index) {
@@ -40,6 +42,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.device_hub_outlined),
             label: 'Double Tap',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_tree_rounded),
+            label: 'Long Press',
           ),
         ],
         currentIndex: _selectedIndex,
