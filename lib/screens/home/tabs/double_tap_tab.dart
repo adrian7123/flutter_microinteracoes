@@ -16,7 +16,7 @@ class _DoubleTapTabState extends State<DoubleTapTab> {
   void doubleTap() {
     setState(() {
       color =
-          color == MyTheme.background ? Color(0xFFbf5a07) : MyTheme.background;
+          color == MyTheme.background ? MyTheme.foreground : MyTheme.background;
       size = 250;
       Future.delayed(Duration(milliseconds: 600)).then(
         (_) => setState(() => size = 100),

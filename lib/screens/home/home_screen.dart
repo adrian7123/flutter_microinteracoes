@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/double_tap_tab.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/long_press_tab.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/pressible_tab.dart';
+import 'package:flutter_microinteracoes/screens/home/tabs/rotation_tab.dart';
+import 'package:flutter_microinteracoes/theme/my_theme.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     PressableTab(),
     DoubleTapTab(),
     LongPressTab(),
+    RotationTab(),
   ];
 
   void _onItemTapped(int index) {
@@ -33,7 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        unselectedItemColor: MyTheme.foreground,
+        selectedItemColor: MyTheme.background,
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             // icon: Icon(Icons.account_tree_rounded),
@@ -47,9 +52,12 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.account_tree_rounded),
             label: 'Long Press',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.tire_repair_outlined),
+            label: 'Rotation',
+          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
     );

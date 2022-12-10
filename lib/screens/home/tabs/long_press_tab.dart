@@ -30,7 +30,7 @@ class _LongPressTabState extends State<LongPressTab> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Pressionar muda o tamanho",
+          "Pressionar por muito tempo muda o tamanho",
           style: TextStyle(fontSize: 30),
         ),
         SizedBox(height: 30),
