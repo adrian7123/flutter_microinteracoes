@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/double_tap_tab.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/long_press_tab.dart';
+import 'package:flutter_microinteracoes/screens/home/tabs/pinch_tab.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/pressible_tab.dart';
 import 'package:flutter_microinteracoes/screens/home/tabs/rotation_tab.dart';
 import 'package:flutter_microinteracoes/theme/my_theme.dart';
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     DoubleTapTab(),
     LongPressTab(),
     RotationTab(),
+    PinchTab(),
   ];
 
   void _onItemTapped(int index) {
