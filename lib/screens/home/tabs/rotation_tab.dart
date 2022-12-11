@@ -1,7 +1,6 @@
-import 'dart:developer';
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
-import 'package:flutter_microinteracoes/widgets/keymotion_gesture_detector.dart';
+// import 'package:flutter_microinteracoes/gestures/rotate_gesture_reorganizer.dart';
+// import 'package:flutter_microinteracoes/widgets/keymotion_gesture_detector.dart';
 import 'package:flutter_microinteracoes/widgets/square_widget.dart';
 
 class RotationTab extends StatefulWidget {
@@ -15,10 +14,10 @@ class _RotationTabState extends State<RotationTab> {
   Duration animationDuration = Duration(milliseconds: 200);
   double angle = 0;
 
-  void onPanUpdate([DragUpdateDetails? details]) {
+  void onScaleUpdate([ScaleUpdateDetails? details]) {
     if (details != null) {
       setState(() {
-        angle = (details.localPosition.direction * math.pi);
+        angle = details.rotation;
       });
     }
   }
@@ -33,14 +32,10 @@ class _RotationTabState extends State<RotationTab> {
           style: TextStyle(fontSize: 30),
         ),
         SizedBox(height: 30),
-        KeymotionGestureDetector(
-          onRotationUpdate: (details) {
-            setState(() {
-              angle = details.rotationAngle;
-            });
-          },
+        GestureDetector(
+          onScaleUpdate: onScaleUpdate,
           child: AnimatedContainer(
-            curve: Curves.bounceOut,
+            curve: Curves.decelerate,
             duration: animationDuration,
             height: size,
             width: size,
@@ -53,6 +48,22 @@ class _RotationTabState extends State<RotationTab> {
             ),
           ),
         ),
+        // KeymotionGestureDetector(
+        //   onRotationUpdate: onRotationUpdate,
+        //   child: AnimatedContainer(
+        //     curve: Curves.bounceOut,
+        //     duration: animationDuration,
+        //     height: size,
+        //     width: size,
+        //     child: Transform.rotate(
+        //       angle: angle,
+        //       child: SquareWidget(
+        //         height: double.infinity,
+        //         width: double.infinity,
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

@@ -37,7 +37,7 @@ class _DoubleTapTabState extends State<DoubleTapTab> {
         GestureDetector(
           onDoubleTap: doubleTap,
           child: AnimatedContainer(
-            curve: Curves.bounceOut,
+            curve: Curves.easeOutCirc,
             duration: animationDuration,
             height: size,
             width: size,

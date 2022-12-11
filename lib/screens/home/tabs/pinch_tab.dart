@@ -10,11 +10,13 @@ class PinchTab extends StatefulWidget {
 class _PinchTabState extends State<PinchTab> {
   double size = 200;
   Duration animationDuration = Duration(milliseconds: 200);
-  double angle = 0;
+  double scale = 1;
 
-  void onPanUpdate([DragUpdateDetails? details]) {
+  void onScaleUpdate([ScaleUpdateDetails? details]) {
     if (details != null) {
-      setState(() {});
+      setState(() {
+        scale = details.scale;
+      });
     }
   }
 
@@ -28,15 +30,15 @@ class _PinchTabState extends State<PinchTab> {
           style: TextStyle(fontSize: 30),
         ),
         SizedBox(height: 30),
-        GestureDetector(
-          onPanUpdate: onPanUpdate,
-          child: AnimatedContainer(
-            curve: Curves.decelerate,
-            duration: animationDuration,
-            height: size,
-            width: size,
-            child: Transform.rotate(
-              angle: angle,
+        Transform.scale(
+          scale: scale,
+          child: GestureDetector(
+            onScaleUpdate: onScaleUpdate,
+            child: AnimatedContainer(
+              curve: Curves.decelerate,
+              duration: animationDuration,
+              height: size,
+              width: size,
               child: SquareWidget(
                 height: double.infinity,
                 width: double.infinity,
